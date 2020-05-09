@@ -7,31 +7,22 @@ export default class extends React.Component {
     super(props);
     this.textValue = React.createRef();
     this.passwordValue = React.createRef();
+    this.state = {
+      show: false
+    }
   }
   registrationUser = (event) => {
     event.preventDefault();
     if(this.textValue.current.value === 'Admin' && 
         this.passwordValue.current.value === '12345') {
-          localStorage.setItem('registration', true);
+          localStorage.setItem('registration', 'true');
         }
     else {
-      return (
-        <Modal.Dialog>
-          <Modal.Header closeButton>
-            <Modal.Title>Modal title</Modal.Title>
-          </Modal.Header>
-
-          <Modal.Body>
-            <p>Modal body text goes here.</p>
-          </Modal.Body>
-
-          <Modal.Footer>
-            <Button variant="secondary">Close</Button>
-            <Button variant="primary">Save changes</Button>
-          </Modal.Footer>
-        </Modal.Dialog>
-      )
+      this.setState({show: true})
     }
+  }
+  handleClose = () => {
+    this.setState({show: false})
   }
   render() {
     return (
@@ -53,6 +44,17 @@ export default class extends React.Component {
             Submit
           </Button>
         </Form>
+        <Modal show={this.state.show} onHide={this.handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Ошибка!</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Данные введены неверно</Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={this.handleClose}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </div>
     )
   }
