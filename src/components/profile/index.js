@@ -1,2 +1,2 @@
-import App from './App';
-export default App;
+import Profile from './profile';
+export default Profile;

@@ -2,6 +2,7 @@ import React from 'react';
 import Home from '../home';
 import Login from '../login';
 import News from '../news';
+import Profile from '../profile';
 import {BrowserRouter as Router, Switch, Route, NavLink} from 'react-router-dom';
 import {Navbar, Nav, Form, FormControl, Button} from 'react-bootstrap';
 import './App.css';
@@ -29,6 +30,7 @@ export default class extends React.Component {
           <Route path="/" exact component={Home}/>
           <Route path="/login" component={Login}/> 
           <Route path="/news" component={News}/> 
+          <Route path="/profile" component={Profile}/> 
         </Switch>
       </Router>
     )
