@@ -1,0 +1,7 @@
+a {
+    color: hsla(0,0%,100%,.5);
+    list-style: none;
+}
+.active {
+    color: white;
+}
