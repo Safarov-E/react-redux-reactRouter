@@ -1,23 +1,34 @@
 import React from 'react';
 import {Card, Button} from 'react-bootstrap';
+import { connect } from 'react-redux';
 import './news.css';
 
-export default class extends React.Component {
+class News extends React.Component {
   render() {
+    console.log(this.props.news)
     return (
-      <div className="container distance">
-        <Card style={{ width: '18rem' }}>
-          <Card.Img variant="top" src="holder.js/100px180" />
-          <Card.Body>
-            <Card.Title>Card Title</Card.Title>
-            <Card.Text>
-              Some quick example text to build on the card title and make up the bulk of
-              the card's content.
-            </Card.Text>
-            <Button variant="primary">Go somewhere</Button>
-          </Card.Body>
-        </Card>
+      <div className="container distance d-flex flex-wrap justify-content-between ">
+        {
+          this.props.news.map((item) => {
+            return (
+              <Card style={{ width: '18rem' }} key={item.id}>
+                <Card.Img variant="top" src={item.images}/>
+                <Card.Body>
+                  <Card.Title>{item.title}</Card.Title>
+                  <Card.Text>{item.description}</Card.Text>
+                  <Button variant="primary">Узнать подробнее</Button>
+                </Card.Body>
+              </Card>
+            )
+          })
+        }
       </div>
     )
   }
 }
+let mapStateToProps = (state) => {
+  return {
+    news: state.news.current
+  }
+}
+export default connect(mapStateToProps)(News);
