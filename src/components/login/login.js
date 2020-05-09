@@ -1,10 +1,11 @@
 import React from 'react';
 import {Form, Button} from 'react-bootstrap';
+import './login.css';
 
 export default class extends React.Component {
   render() {
     return (
-      <div className="container">
+      <div className="container distance">
         <Form>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>

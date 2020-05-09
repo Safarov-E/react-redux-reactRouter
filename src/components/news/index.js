@@ -1,2 +1,2 @@
-import App from './App';
-export default App;
+import News from './news';
+export default News;
